@@ -1,11 +1,11 @@
-name: Build and publish Docker Image
+name: build and publish docker image
 on:
   schedule:
     - cron: '0 0 1 * *'
   push:
     paths:
     - 'Dockerfile'
-    - '.github/workflows/build-and-publish-docker.yml'
+    - '.github/workflows/build-and-publish-docker-image.yml'
 jobs:
   build:
     name: Build texlive-full
@@ -16,7 +16,7 @@ jobs:
       - name: Build
         run: docker build -t texlive-full .
       - name: Test
-        run: docker run --rm texlive-full --version
+        run: docker run --rm texlive-full latexmk --version
       - name: Deploy
         run: |
           TAG="ghcr.io/pbizopoulos/texlive-full"

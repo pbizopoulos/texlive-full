@@ -7,5 +7,5 @@ docker run --rm \
 	       --volume "`pwd`:/usr/src/app" \
 	       --user `id -u`:`id -g` \
 	       ghcr.io/pbizopoulos/texlive-full \
-	       -pdf ms.tex
+	       latexmk -pdf ms.tex
 ```
